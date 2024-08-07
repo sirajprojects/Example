@@ -1,0 +1,3 @@
+mybatis:
+ type-asliase-package: com.model
+ mapper-locations: classpath:dbMappers/*.xml
