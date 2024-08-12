@@ -10,15 +10,13 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import batch.org.springweb.service.QueryService;
+
 
 @SpringBootApplication
 public class Application implements CommandLineRunner {
 
     private static final Logger logger = LoggerFactory.getLogger(Application.class);
 
-    @Autowired
-    private QueryService queryService;
 
     public static void main(String[] args) {
         SpringApplication.run(Application.class, args);
@@ -26,23 +24,7 @@ public class Application implements CommandLineRunner {
 
     @Override
     public void run(String... args) {
-        try {
-            // Hardcoded query
-            String query = "SELECT * FROM app";
-
-            // Execute the query without parameters
-            List<Map<String, Object>> results = queryService.fetchQueryResults(query);
-
-            // Output results
-            if (results.isEmpty()) {
-                logger.info("No records found.");
-            } else {
-                results.forEach(result -> {
-                    logger.info("Record: {}", result);
-                });
-            }
-        } catch (Exception e) {
-            logger.error("Error executing query: {}", e.getMessage(), e);
+       
         }
     }
-}
+
