@@ -1,0 +1,16 @@
+Map<String, Object> templateVariables = new HashMap<>();
+templateVariables.put("jobName", "Your Batch Job Name");
+templateVariables.put("jobId", jobExecution.getJobId());
+templateVariables.put("totalRecords", batchStats.getTotalRecords());
+templateVariables.put("insertCount", batchStats.getInsertCount());
+templateVariables.put("updateCount", batchStats.getUpdateCount());
+templateVariables.put("errorCount", batchStats.getErrorCount());
+templateVariables.put("successRate", calculateSuccessRate());
+templateVariables.put("startTime", jobExecution.getStartTime());
+templateVariables.put("endTime", jobExecution.getEndTime());
+templateVariables.put("duration", formatDuration());
+templateVariables.put("jobStatus", jobExecution.getStatus());
+templateVariables.put("timestamp", new Date());
+templateVariables.put("hostName", InetAddress.getLocalHost().getHostName());
+templateVariables.put("applicationName", "Your Batch Application");
+templateVariables.put("jobParameters", jobExecution.getJobParameters());

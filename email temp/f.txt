@@ -1,0 +1,6 @@
+<!-- In HTML version -->
+<div class="log-snippet">
+    [2023-10-25 14:32:45] ERROR ID: ERR-2345 
+    com.example.Service.processItem(Item.java:123)
+    "Database connection failed"
+</div>

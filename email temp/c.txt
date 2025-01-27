@@ -1,0 +1,23 @@
+@Autowired
+private JavaMailSender mailSender;
+
+public void sendBatchReport(JobExecution jobExecution, BatchStatistics stats) {
+    MimeMessage message = mailSender.createMimeMessage();
+    MimeMessageHelper helper = new MimeMessageHelper(message, true);
+    
+    helper.setTo("recipient@company.com");
+    helper.setSubject("Batch Report: " + jobExecution.getJobInstance().getJobName());
+    
+    // Populate template variables
+    Map<String, Object> variables = createTemplateVariables(jobExecution, stats);
+    
+    // Process HTML template
+    String htmlContent = templateEngine.process("batch-email-template.html", variables);
+    helper.setText(htmlContent, true);
+    
+    // Optional: Add plain text alternative
+    String textContent = templateEngine.process("batch-email-template.txt", variables);
+    helper.setText(textContent, false);
+    
+    mailSender.send(message);
+}

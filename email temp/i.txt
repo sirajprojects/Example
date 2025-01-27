@@ -1,0 +1,12 @@
+String errorId = "ERR-" + Integer.toHexString(stackTrace.hashCode());
+
+ogger.error("[{}] Error in {}: {}", errorId, methodName, e.getMessage());
+
+
+if (batchStats.getErrorCount() > 0) {
+    if (batchStats.getErrorRate() > 5% || hasCriticalErrors()) {
+        sendCriticalFailureEmail();
+    } else {
+        sendWarningEmail();
+    }
+}

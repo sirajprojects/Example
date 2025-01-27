@@ -1,0 +1,17 @@
+public class ErrorDetail {
+    private String id;          // "ERR-2345"
+    private String methodName;  // "CustomerProcessor.validate"
+    private String message;     // "Invalid customer format"
+    private int count;          // 15
+    private String firstOccurrence; // "2023-10-25 14:32:45"
+    private String stackTrace;
+}
+
+// In your exception handler
+void logError(Exception e, String methodName) {
+    ErrorDetail detail = new ErrorDetail();
+    detail.setId(generateErrorId(e)); // Use hash of stack trace
+    detail.setMethodName(methodName);
+    detail.setMessage(e.getMessage());
+    // Add to batch statistics
+}
